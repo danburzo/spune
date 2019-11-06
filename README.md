@@ -1,0 +1,2 @@
+# spune
+Spune orice număr
