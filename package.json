@@ -1,0 +1,11 @@
+{
+  "name": "spune",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:danburzo/spune.git",
+  "author": "Dan Burzo <dan@danburzo.ro>",
+  "license": "MIT",
+  "bin": {
+  	"spune": "./cli.js"
+  }
+}

@@ -1,2 +1,3 @@
 # spune
-Spune orice număr
+
+Say any number from zero to a trillion, in Romanian.
