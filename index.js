@@ -48,7 +48,7 @@ function spune(n, feminin) {
 		let rest = n % 100;
 		let num = sute === 1 ? 'o sută' : spune(sute, true) + ' sute';
 		if (rest) {
-			return `${num} ${spune(rest)}`;
+			return `${num} ${spune(rest, feminin)}`;
 		}
 		return num;
 	}
@@ -59,7 +59,7 @@ function spune(n, feminin) {
 		let rest = n % 1000;
 		let num = mii === 1 ? 'o mie' : spune(mii, true) + (mii < 20 ? '' : ' de') + ' mii';
 		if (rest) {
-			return `${num} ${spune(rest)}`;
+			return `${num} ${spune(rest, feminin)}`;
 		}
 		return num;
 	}
@@ -72,7 +72,7 @@ function spune(n, feminin) {
 		let num = milioane === 1 ? 'un milion' :
 			spune(milioane, true) + (milioane < 20 ? '' : ' de') + ' milioane';
 		if (rest) {
-			return `${num} ${spune(rest)}`;
+			return `${num} ${spune(rest, feminin)}`;
 		}
 		return num;
 	}
@@ -84,7 +84,7 @@ function spune(n, feminin) {
 		let rest = n % MM;
 		let num = miliarde === 1 ? 'un miliard' : spune(miliarde, true) + (miliarde < 20 ? '' : ' de') + ' miliarde';
 		if (rest) {
-			return `${num} ${spune(rest)}`;
+			return `${num} ${spune(rest, feminin)}`;
 		}
 		return num;
 	}
