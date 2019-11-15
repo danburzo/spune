@@ -1,6 +1,6 @@
 {
   "name": "spune",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "repository": "git@github.com:danburzo/spune.git",
   "author": "Dan Burzo <dan@danburzo.ro>",
@@ -12,6 +12,6 @@
     "tape": "^4.11.0"
   },
   "scripts": {
-  	"test": "tape index.test.js"
+    "test": "tape index.test.js"
   }
 }
