@@ -9,8 +9,6 @@ let tests = [
 ];
 
 tape('basic', t => {
-	tests.forEach(item => {
-		t.equal(spune(item[0]), item[1]);
-	})
+	tests.forEach(item => t.equal(spune(item[0]), item[1]));
 	t.end();
 });
