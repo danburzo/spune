@@ -6,6 +6,12 @@
   "author": "Dan Burzo <dan@danburzo.ro>",
   "license": "MIT",
   "bin": {
-  	"spune": "./cli.js"
+    "spune": "./cli.js"
+  },
+  "devDependencies": {
+    "tape": "^4.11.0"
+  },
+  "scripts": {
+  	"test": "tape index.test.js"
   }
 }
