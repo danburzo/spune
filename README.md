@@ -1,10 +1,10 @@
 # spune
 
-Spell any number from zero to a trillion, in Romanian.
+Spell (almost) any number in Romanian.
 
 _The rest of the documentation is in Romanian:_
 
-Scrie pe litere orice număr de la zero la un trilion.
+Scrie pe litere (aproape) orice număr.
 
 ## Utilizare
 
@@ -65,7 +65,7 @@ spune(4); // => "patru"
 
 __spune__(_număr_, _gen = 0_, _scurt = false_, _forme_) → _String_
 
-Returnează reprezentarea pe litere a unui număr cuprins între 0 și un trilion. Pentru numere mai mari de-atît, sau lucruri care nu sunt numere, returnează string-ul `nu știu`.
+Returnează reprezentarea pe litere a unui număr.
 
 Opțiuni:
 
@@ -85,6 +85,14 @@ spune(22, 1, false, ['carte', 'cărți']);
 // => douăzeci și două de cărți
 ```
 
+## Notițe
+
+* varianta scurtă a lui 12 este `doișpe` indiferent de gen;
+* varianta scurtă a lui 18 este `optîșpe`;
+* de la milion în sus, limba română este inconsecventă. Aici folosim scara scurtă: _milion_, _miliard_, _trilion_, _catralion_, etc. la fiecare creștere de o mie. Ne oprim după _septilion_ așa, ca să punem și noi punct undeva :-)
+
 ## Referințe
 
 * [Romanian numbers](https://en.wikipedia.org/wiki/Romanian_numbers)
+* [Long and short scales](https://en.wikipedia.org/wiki/Long_and_short_scales)
+* [Scara numerică](https://dexonline.ro/articol/Scara_numeric%C4%83)

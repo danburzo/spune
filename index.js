@@ -107,9 +107,14 @@ function spune(n, gen, scurt, forme) {
 	}
 
 	let marimi = [
-		[1000, 'mie', 'mii', 1],
-		[1000 * 1000, 'milion', 'milioane', 2],
-		[1000 * 1000 * 1000, 'miliard', 'miliarde', 2]
+		[Math.pow(10, 3), 'mie', 'mii', 1],
+		[Math.pow(10, 6), 'milion', 'milioane', 2],
+		[Math.pow(10, 9), 'miliard', 'miliarde', 2],
+		[Math.pow(10, 12), 'trilion', 'trilioane', 2],
+		[Math.pow(10, 15), 'catralion', 'catralioane', 2],
+		[Math.pow(10, 18), 'cvintilion', 'cvintilioane', 2]
+		[Math.pow(10, 21), 'sextilion', 'sextilioane', 2],
+		[Math.pow(10, 24), 'septilion', 'septilioane', 2]
 	];
 
 	let m = marimi.find(m => n < 1000 * m[0]);
