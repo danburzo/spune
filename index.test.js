@@ -51,7 +51,7 @@ tape('prep', t => {
 	];
 
 	prep.forEach(item => {
-		t.equal(spune(item[0], false, false, true), item[1], item[0]);
+		t.equal(spune(item[0], false, false, []), item[1], item[0]);
 	});
 	t.end();
 })

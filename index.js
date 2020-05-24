@@ -13,34 +13,56 @@
 		
 		pentru 11-19, folosește forma scurtă:
 		de la "unșpe" la "nouășpe"
-	
-	*	`prep` (bool) 
-	
-		include, sau nu, prepoziția `de`
+
+	*	`forme` (Array)
+		
+		forma la singular și la plural a unui substantiv
+		de introdus după număr
  */
 
-function spune(n, gen, scurt, prep) {
+function spune(n, gen, scurt, forme) {
+	
+	n = +n;
+
+	let fem = gen && gen !== 2;
 
 	if (n === 0) {
+		if (forme) {
+			let num = fem ? 'nicio' : 'niciun';
+			if (forme[0]) {
+				num += ' ' + forme[0];
+			}
+			return num;
+		}
 		return 'zero';
 	}
 
 	if (n <= 10) {
-		switch (+n) {
-			case 1: return gen && gen !== 2 ? 'una' : 'unu';
-			case 2: return gen ? 'două' : 'doi';
-			case 3: return 'trei';
-			case 4: return 'patru';
-			case 5: return 'cinci';
-			case 6: return 'șase';
-			case 7: return 'șapte';
-			case 8: return 'opt';
-			case 9: return 'nouă';
-			case 10: return 'zece';
+		let num;
+		switch (n) {
+			case 1: 
+				num = forme ? 
+					fem ? 'o' : 'un' :
+					fem ? 'una' : 'unu';
+				break;
+			case 2: num = gen ? 'două' : 'doi'; break;
+			case 3: num = 'trei'; break;
+			case 4: num = 'patru'; break;
+			case 5: num = 'cinci'; break;
+			case 6: num = 'șase'; break;
+			case 7: num = 'șapte'; break;
+			case 8: num = 'opt'; break;
+			case 9: num = 'nouă'; break;
+			case 10: num = 'zece'; break;
 		}
+
+		let sufix = forme ? n === 1 ? forme[0] : forme[1] : null;
+		if (sufix) {
+			num += ' ' + sufix;
+		}
+		return num;
 	}
 
-	// zeci
 	if (n < 20) {
 		let cifra = n % 10;
 		let prefix = 
@@ -50,8 +72,9 @@ function spune(n, gen, scurt, prep) {
 			cifra === 5 && scurt ? 'cin' : 
 			cifra === 6 ? 'șai' : 
 			cifra === 8 && scurt ? 'optî' :
-			spune(cifra, gen, scurt);
-		return `${prefix}${ scurt ? 'șpe' : 'sprezece'}`;
+			spune(cifra, gen);
+		let num = `${prefix}${ scurt ? 'șpe' : 'sprezece'}`;
+		return forme && forme[1] ? num + ' ' + forme[1] : num;
 	}
 
 	// zeci
@@ -63,57 +86,47 @@ function spune(n, gen, scurt, prep) {
 		if (cifra !== 0) {
 			num += ` și ${spune(cifra, gen, scurt)}`;
 		}
-		return num + (prep ? ' de' : '');
+		if (forme) {
+			num += ' de';
+		}
+		return forme && forme[1] ? num + ' ' + forme[1] : num;
 	}
 
 	// sute
 	if (n < 1000) {
 		let sute = Math.floor(n / 100);
 		let rest = n % 100;
-		let num = sute === 1 ? 'o sută' : spune(sute, 1, scurt) + ' sute';
+		let num = spune(sute, 1, scurt, ['sută', 'sute']);
 		if (rest) {
-			return `${num} ${spune(rest, gen, scurt, prep)}`;
+			num += ' ' + spune(rest, gen, scurt);
 		}
-		return num;
+		if (forme && rest >= 20) {
+			num += ' de';
+		}
+		return forme && forme[1] ? num + ' ' + forme[1] : num;
 	}
 
-	// mii
-	if (n < 1000 * 1000) {
-		let mii = Math.floor(n / 1000);
-		let rest = n % 1000;
-		let num = mii === 1 ? 'o mie' : spune(mii, 1, scurt) + (mii % 100 < 20 ? '' : ' de') + ' mii';
+	let marimi = [
+		[1000, 'mie', 'mii', 1],
+		[1000 * 1000, 'milion', 'milioane', 2],
+		[1000 * 1000 * 1000, 'miliard', 'miliarde', 2]
+	];
+
+	let m = marimi.find(m => n < 1000 * m[0]);
+	if (m) {
+		let div = Math.floor(n / m[0]);
+		let rest = n % m[0];
+		let num = spune(div, m[3], scurt, [m[1], m[2]]);
 		if (rest) {
-			return `${num} ${spune(rest, gen, scurt, prep)}`;
+			num += ' ' + spune(rest, gen, scurt);
 		}
-		return num;
+		if (forme && rest >= 20) {
+			num += ' de';
+		}
+		return forme && forme[1] ? num + ' ' + forme[1] : num;
 	}
 
-	// milioane
-	let M = 1000 * 1000;
-	if (n < 1000 * M) {
-		let milioane = Math.floor(n / M);
-		let rest = n % M;
-		let num = milioane === 1 ? 'un milion' :
-			spune(milioane, 1, scurt) + (milioane % 100 < 20 ? '' : ' de') + ' milioane';
-		if (rest) {
-			return `${num} ${spune(rest, gen, scurt, prep)}`;
-		}
-		return num;
-	}
-
-	// miliarde
-	let MM = 1000 * 1000 * 1000;
-	if (n < 1000 * MM) {
-		let miliarde = Math.floor(n / MM);
-		let rest = n % MM;
-		let num = miliarde === 1 ? 'un miliard' : spune(miliarde, 1, scurt) + (miliarde % 100 < 20 ? '' : ' de') + ' miliarde';
-		if (rest) {
-			return `${num} ${spune(rest, gen, scurt, prep)}`;
-		}
-		return num;
-	}
-
-	return 'nu știu';
+	return `nu știu${forme && forme[1] ? ' cîte ' + forme[1] : ''}`;
 }
 
 module.exports = spune;
