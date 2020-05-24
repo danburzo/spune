@@ -9,10 +9,9 @@
     "spune": "./cli.js"
   },
   "devDependencies": {
-    "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
   },
   "scripts": {
-    "test": "tape index.test.js | tap-spec"
+    "test": "tape index.test.js"
   }
 }
