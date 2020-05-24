@@ -4,7 +4,7 @@ Spell any number from zero to a trillion, in Romanian.
 
 _The rest of the documentation is in Romanian:_
 
-Spune pe litere orice număr de la zero la un trilion.
+Scrie pe litere orice număr de la zero la un trilion.
 
 ## Utilizare
 

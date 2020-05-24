@@ -26,7 +26,7 @@ function spune(n, gen, scurt, prep) {
 	}
 
 	if (n <= 10) {
-		switch (n) {
+		switch (+n) {
 			case 1: return gen && gen !== 2 ? 'una' : 'unu';
 			case 2: return gen ? 'două' : 'doi';
 			case 3: return 'trei';

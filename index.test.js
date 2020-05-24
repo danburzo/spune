@@ -2,6 +2,7 @@ let tape = require('tape');
 let spune = require('./index');
 
 let tests = [
+	[1, 'unu', 'una'],
 	[2000, 'două mii'],
 	[124342, 
 		'o sută douăzeci și patru de mii trei sute patruzeci și doi',
