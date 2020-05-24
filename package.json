@@ -1,6 +1,11 @@
 {
   "name": "spune",
-  "version": "2.0.0",
+  "description": "Spell any number from zero to a trillion, in Romanian. Scrie pe litere orice număr de la zero la un trilion.",
+  "keywords": [
+    "language",
+    "romanian"
+  ],
+  "version": "2.0.1",
   "main": "index.js",
   "repository": "git@github.com:danburzo/spune.git",
   "author": "Dan Burzo <dan@danburzo.ro>",
