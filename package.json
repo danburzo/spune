@@ -14,7 +14,7 @@
     "spune": "./cli.js"
   },
   "devDependencies": {
-    "tape": "^4.11.0"
+    "tape": "^5.3.0"
   },
   "scripts": {
     "test": "tape index.test.js"

@@ -81,10 +81,21 @@ function spune(n, gen, scurt, forme) {
 	if (n < 100) {
 		let zeci = Math.floor(n / 10);
 		let cifra = n % 10;
-		let prefix = zeci === 6 ? 'șai' : spune(zeci, 1, scurt);
-		let num = `${prefix}zeci`;
+		let num;
+		if (zeci === 6) {
+			num = 'șai';
+		} else if (zeci === 5 && scurt) {
+			num = 'cin';
+		} else {
+			num = spune(zeci, 1, scurt);
+		}
+		if (cifra !== 0 && scurt) {
+			num += cifra === 6 ? '' : 'ș';
+		} else {
+			num += 'zeci';
+		}
 		if (cifra !== 0) {
-			num += ` și ${spune(cifra, gen, scurt)}`;
+			num += `${scurt ? '' : ' și '}${spune(cifra, gen, scurt)}`;
 		}
 		if (forme) {
 			num += ' de';

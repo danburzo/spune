@@ -32,7 +32,11 @@ tape('feminine', t => {
 tape('short', t => {
 	let short = [
 		[12, 'doișpe'],
-		[18300, 'optîșpe mii trei sute']
+		[18300, 'optîșpe mii trei sute'],
+		[21, 'douășunu'],
+		[52, 'cinșdoi'],
+		[66, 'șaișase'],
+		[99, 'nouășnouă']
 	];
 
 	short.forEach(item => {
